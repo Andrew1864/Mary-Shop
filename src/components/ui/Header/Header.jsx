@@ -1,30 +1,55 @@
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import AddHomeWorkRoundedIcon from '@mui/icons-material/AddHomeWorkRounded';
+
+const NavItems = [
+    { name: "Home", path: "/", icon: <AddHomeWorkRoundedIcon /> }
+]
 
 const Header = () => {
+    // Получаем текущее местоположение (URL) из хука
+    const location = useLocation();
+
+    // Хук для навигации (роутинга) по страницам
+    const navigate = useNavigate();
+
+    /**
+  * Определяет, активна ли ссылка.
+  * @param {string} path - Путь ссылки.
+  * @returns {boolean} ссылка активна или нет.
+  */
+    const isActiveLink = (path) => {
+        return (
+            location?.pathname === path ||
+            (path === "/cards" && location?.pathname?.startsWith("/cards"))
+        );
+    };
 
     return (
         <header className="bg-white shadow fixed top-0 left-0 right-0 z-10">
-            <div>
-                <div  className="">
+            <div className="max-w-7xl mx-auto px-2">
+                <div className="relative flex justify-between h-24">
                     <nav className="flex items-center justify-between flex-wrap bg-teal p-6">
-                        <div className="flex items-center flex-no-shrink font-sans font-black text-6xl text-black ml-7 mr-3">
-                          MARY.SHOP
-                        </div>
-                        <div className="block lg:hidden">
-                            <button className="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-indigo-500 hover:border-indigo-500">
-                                <svg className="h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>
-                            </button>
-                        </div>
+                        <NavLink to="/">
+                            <h1 className="mb-4 mr-8 max-w-2xl text-4xl font-extrabold leading-none md:text-5xl xl:text-5xl dark:text-white">
+                                MARY.SHOP
+                            </h1>
+                        </NavLink>
                         <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
                             <div className="text-sm lg:flex-grow">
-                                <a href="#responsive-header" className="text-zinc-800 inline-flex items-center px-1 pt-1 text-sm  hover:text-indigo-500 hover:border-indigo-500 mr-4">
-                                    Home
-                                </a>
-                                <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-indigo-500 hover:border-indigo-500 mr-4">
-                                    Shop
-                                </a>
-                            </div>
-                            <div>
-                                <a href="#" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal hover:bg-white mt-4 lg:mt-0">Download</a>
+                                {NavItems.map((item) => {
+                                    return (
+                                        <NavLink
+                                            to={item?.path}
+                                            key={item?.path}
+                                            className={`text-zinc-800 inline-flex items-center px-1 pt-1 text-sm ${isActiveLink(item?.path)
+                                                ? "text-indigo-500 border-b-2 border-indigo-500"
+                                                : "hover:text-indigo-500"
+                                                }`}>
+                                            {item?.name}
+                                            {item?.icon}
+                                        </NavLink>
+                                    );
+                                })}
                             </div>
                         </div>
                     </nav>
