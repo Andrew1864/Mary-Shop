@@ -1,7 +1,6 @@
-import "./index.css";
-import Header from "./components/ui/Header/Header";
-import Home from "./pages/Home";
-// import { Card } from "./components/ui/Card/Card";
+import { BrowserRouter as Router } from "react-router-dom";
+import AppRoutes from "./components/routes/AppRoutes"
+
 
 // Данные карточек (продукты)
 // const initialProducts = [
@@ -67,15 +66,19 @@ import Home from "./pages/Home";
 //   },
 // ];
 
-function App() {
+const App = () => {
   return (
-    <>
-      <Header />
-      <main className="bg-[#F2F0F1]">
-        <Home  className="bg-[#F2F0F1]" />
-      </main>
-    </>
+    <Router>
+      <AppRoutes />
+    </Router>
   );
-}
+};
+
 
 export default App;
+ // <>
+    //   <Header />
+    //   <main className="bg-[#F2F0F1]">
+    //     <Home  className="bg-[#F2F0F1]" />
+    //   </main>
+    // </>
