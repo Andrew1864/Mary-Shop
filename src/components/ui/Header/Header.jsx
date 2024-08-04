@@ -25,9 +25,9 @@ const Header = () => {
     };
 
     return (
-        <header className="bg-white shadow fixed top-0 left-0 right-0 z-10">
-            <div className="max-w-7xl mx-auto px-2">
-                <div className="relative flex justify-between h-24">
+        <header className="bg-white shadow fixed top-0 left-0 right-0 z-10 ">
+            <div className="max-w-7xl mx-auto px-2 sm:h-29">
+                <div className="relative flex justify-between ">
                     <nav className="flex items-center justify-between flex-wrap bg-teal p-6">
                         <NavLink to="/">
                             <h1 className="mb-4 mr-8 max-w-2xl text-4xl font-extrabold leading-none md:text-5xl xl:text-5xl dark:text-white">
