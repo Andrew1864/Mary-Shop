@@ -125,7 +125,8 @@ return {
     onToggleFavorite,
     getFavoriteProducts,
     addToCart,
-    
+    deleteProductsFromCart,
 };
-
 });
+
+export default useProductsStore;
