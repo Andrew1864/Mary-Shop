@@ -1,5 +1,6 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import AddHomeWorkRoundedIcon from '@mui/icons-material/AddHomeWorkRounded';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const NavItems = [
     { name: "Home", path: "/", icon: <AddHomeWorkRoundedIcon /> }
@@ -53,6 +54,17 @@ const Header = () => {
                             </div>
                         </div>
                     </nav>
+                    <div className=" inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                        <button
+                            type="button"
+                            // className={`${location?.pathname === "/favorites"}`}
+                        >
+                            <FavoriteIcon className="" />
+                        </button>
+                        <button>
+
+                        </button>
+                    </div>
                 </div>
             </div>
         </header>

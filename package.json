@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "server": "json-server --watch db.json",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
@@ -15,10 +16,12 @@
     "@mui/icons-material": "^5.16.6",
     "@mui/material": "^5.16.6",
     "browser-router": "^0.2.0",
+    "json-server": "0.17.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router": "^6.26.0",
-    "react-router-dom": "^6.26.0"
+    "react-router-dom": "^6.26.0",
+    "zustand": "^4.5.4"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.0",
