@@ -8,7 +8,7 @@ const MainLayout = () => {
   return (
     <div className="bg-[#F2F0F1] max-w-full flex flex-col min-h-screen ">
       <Header />
-      <main className="bg-[#F2F0F1] mb-3 ">
+      <main className="bg-[#F2F0F1] p-0 m-0 ">
         <Outlet />
       </main>
       <Footer />

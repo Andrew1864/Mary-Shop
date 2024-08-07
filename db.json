@@ -258,7 +258,7 @@
             },
             "rating": "1.7",
             "price": "250",
-            "imgSrc": "../assets/products/another1.png",
+            "imgSrc": "../assets/products/anothe1.png",
             "isFavorite": true,
             "quantity": 1
         },
@@ -288,7 +288,7 @@
             },
             "rating": "3.0",
             "price": "98",
-            "imgSrc": "../assets/products/another2.png",
+            "imgSrc": "../assets/products/anohter2.png",
             "isFavorite": false,
             "quantity": 1
         },

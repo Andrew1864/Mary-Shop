@@ -1,10 +1,12 @@
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import AddHomeWorkRoundedIcon from '@mui/icons-material/AddHomeWorkRounded';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalanceWalletOutlined';
 
 const NavItems = [
-    { name: "Home", path: "/", icon: <AddHomeWorkRoundedIcon /> }
-]
+    { name: "Home", path: "/", icon: <AddHomeWorkRoundedIcon className="w-5 h-5 ml-1" /> },
+    { name: "Shop", path: "/cards", icon: <AccountBalanceWalletOutlinedIcon className="w-5 h-5 ml-1" />},
+];
 
 const Header = () => {
     // Получаем текущее местоположение (URL) из хука
@@ -35,14 +37,14 @@ const Header = () => {
                                 MARY.SHOP
                             </h1>
                         </NavLink>
-                        <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+                        <div className="ml-6 flex-grow lg:flex lg:items-center lg:w-auto">
                             <div className="text-sm lg:flex-grow">
                                 {NavItems.map((item) => {
                                     return (
                                         <NavLink
                                             to={item?.path}
                                             key={item?.path}
-                                            className={`text-zinc-800 inline-flex items-center px-1 pt-1 text-sm ${isActiveLink(item?.path)
+                                            className={` text-zinc-800 mr-10 inline-flex items-center px-1 pt-1 text-sm ${isActiveLink(item?.path)
                                                 ? "text-indigo-500 border-b-2 border-indigo-500"
                                                 : "hover:text-indigo-500"
                                                 }`}>

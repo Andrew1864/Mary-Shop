@@ -1,4 +1,5 @@
 import { create } from "zustand";
+// import { initialProducts } from "../../data";
 
 /**
  * Стор для управления продуктами и состоянием сохраненных продуктов.
@@ -6,6 +7,12 @@ import { create } from "zustand";
 const useProductsStore = create((set, get) => {
     // Инициализация переменной для хранения продуктов
     let products;
+
+    // Загрузка избранных продуктов из localStorage.
+    const storedFavorites = JSON?.parse(localStorage?.getItem("favorites")) || [];
+
+    // Загрузка товаров корзины из localStorage.
+    const storedCart = JSON?.parse(localStorage?.getItem("cart")) || [];
 
     (async () => {
         try {
@@ -32,47 +39,44 @@ const useProductsStore = create((set, get) => {
     })();
 
     /**
-    Находит продукт по id.
-    @param {string} id - id продукта.
-    @returns {Object|null} Возвращает найденный продукт или null.
-    */
-    const getProductById = (id) => {
+      Находит продукт по id.
+      @param {string} id - id продукта.
+      @returns {Object|null} Возвращает найденный продукт или null.
+      */
+    const getProductById = (id) =>
         products?.find((product) => product?.id === id) || null;
-    };
 
     /**
-   * Получает отфильтрованные продукты по категории.
-   * @param {string} category - выбранная категория.
-   * @returns {Array} Массив отфильтрованных продуктов.
-   */
+     * Получает отфильтрованные продукты по категории.
+     * @param {string} category - выбранная категория.
+     * @returns {Array} Массив отфильтрованных продуктов.
+     */
     const getFilteredProducts = (category) => {
         if (category === "All") {
             return products;
-        };
-        return products.filter((product) => product?.category === category);
+        }
+        return products?.filter((product) => product?.category === category);
     };
 
     /**
-   * Получает уникальные категории из продуктов.
-   * @returns {Array} Массив уникальных категорий.
-   */
-
+     * Получает уникальные категории из продуктов.
+     * @returns {Array} Массив уникальных категорий.
+     */
     const getCategories = () => [
         "All",
         ...new Set(products?.map((product) => product?.category)),
     ];
 
     /**
-   * Переключает состояние сохраненного продукта по id.
-   * @param {string} id - id продукта.
-   */
-
+     * Переключает состояние сохраненного продукта по id.
+     * @param {string} id - id продукта.
+     */
     const onToggleFavorite = (id) => {
         // Обновляем продукты на странице, переключая состояние сохраненного продукта
         const updatedProducts = products?.map((product) => {
             if (product?.id === id) {
                 product.isFavorite = !product?.isFavorite;
-            };
+            }
             return product;
         });
 
@@ -81,22 +85,24 @@ const useProductsStore = create((set, get) => {
             ?.filter((product) => product?.isFavorite)
             ?.map((product) => product?.id);
 
-        localStorage.setItem("Favorites", JSON.stringify(updatedFavorites));
+        localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
 
-        set({ products: updatedProducts }); // Обновляем состояние.
+        // Обновляем состояние.
+        set({ products: updatedProducts });
     };
 
     /**
- * Получает все сохраненные продукты.
- * @returns {Array} Массив всех сохраненных продуктов.
- */
-    const getFavoriteProducts = () => products?.filter((product) => product?.isFavorite);
+     * Получает все сохраненные продукты.
+     * @returns {Array} Массив всех сохраненных продуктов.
+     */
+    const getFavoriteProducts = () =>
+        products?.filter((product) => product?.isFavorite);
 
     /**
-   * Функция добавления товаров в корзину
-   * @param {Object} product - Данные товара.
-   * @returns {void}
-   */
+     * Функция добавления товаров в корзину
+     * @param {Object} product - Данные товара.
+     * @returns {void}
+     */
     const addToCart = (product) => {
         const updatedCart = [...get().cart, { ...product, quantity: 1 }];
 
@@ -106,27 +112,59 @@ const useProductsStore = create((set, get) => {
     };
 
     /**
-  * Функция удаления товара из корзины
-  * @param {string} productId - id товара.
-  * @returns {void}
-  */
-    const deleteProductsFromCart = (productId) => {
+     * Функция удаления товара из корзины
+     * @param {string} productId - id товара.
+     * @returns {void}
+     */
+    const deleteProductFromCart = (productId) => {
         const updatedCart = get()?.cart?.filter((product) => product?.id !== productId);
 
-        localStorage?.setItem("cart", JSON?.stringify(updatedCart));
+        localStorage?.setItem('cart', JSON?.stringify(updatedCart));
 
         set({ cart: updatedCart });
     };
-return {
-    products,
-    getProductById,
-    getFilteredProducts,
-    getCategories,
-    onToggleFavorite,
-    getFavoriteProducts,
-    addToCart,
-    deleteProductsFromCart,
-};
+
+    /**
+     * Функция увеличения/уменьшения количества товара.
+     * @param {string} quantity - Количество (значение).
+     * @param {string} productId - id товара.
+     */
+    const updateCartQuantity = (quantity, productId) => {
+        const updatedCart = get()?.cart?.map((item) => {
+            if (item?.id === productId) {
+                return { ...item, quantity };
+            }
+            return item;
+        });
+
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+        set({ cart: updatedCart });
+    };
+
+    /**
+     * Получает общее количество добавленных ранее товаров в корзину.
+     * @returns {Array} Массив всех добавленных ранее товаров.
+     */
+    const getAllCartProducts = () => {
+        return get().cart?.reduce((total, product) => {
+            return total + product?.quantity;
+        }, 0);
+    };
+
+    return {
+        products,
+        getProductById,
+        getFilteredProducts,
+        getCategories,
+        onToggleFavorite,
+        getFavoriteProducts,
+        cart: storedCart,
+        addToCart,
+        updateCartQuantity,
+        getAllCartProducts,
+        deleteProductFromCart,
+    };
 });
 
 export default useProductsStore;
