@@ -2,13 +2,13 @@ import { Routes, Route } from "react-router-dom";
 import MainLayout from "../../layouts/MainLayout";
 import Home from "../../pages/Home";
 import Cards from "../../pages/Cards";
-// import CardDitails from "../../pages/CardDitails";
+import CardDitails from "../../pages/CardDitails";
 
 
 const routes = [
   { path: "/", element: <Home /> },
   { path: "cards/", element: <Cards /> },
-  // {path: "Cards/:id", element: <CardDitails />},
+  { path: "cards/:id", element: <CardDitails /> },
 
 ];
 
@@ -34,6 +34,5 @@ const AppRoutes = () => (
     </Route>
   </Routes>
 );
-console.log("12312", AppRoutes)
 
 export default AppRoutes;

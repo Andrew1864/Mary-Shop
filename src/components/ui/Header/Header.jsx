@@ -1,4 +1,5 @@
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import useProductsStore from '../../../store/useProductsStore';
 import AddHomeWorkRoundedIcon from '@mui/icons-material/AddHomeWorkRounded';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalanceWalletOutlined';
@@ -14,6 +15,10 @@ const Header = () => {
 
     // Хук для навигации (роутинга) по страницам
     const navigate = useNavigate();
+
+    const { getFavoriteProducts } = useProductsStore(); 
+
+    const favoriteCount = getFavoriteProducts()?.length; // для показа сохраненок
 
     /**
   * Определяет, активна ли ссылка.
@@ -59,9 +64,14 @@ const Header = () => {
                     <div className=" inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                         <button
                             type="button"
-                            // className={`${location?.pathname === "/favorites"}`}
+                            className={`w-14`}
                         >
                             <FavoriteIcon className="" />
+                            {!!favoriteCount && (
+                                <span className='w-4 h-4 mb-1 text-xs/6 px-1 leading-4 text-white inline-flex justify-center justify-items-center bg-indigo-500 rounded-3xl absolute  right-1'>
+                                        {favoriteCount}
+                                </span>
+                            )}
                         </button>
                         <button>
 
