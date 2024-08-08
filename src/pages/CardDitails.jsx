@@ -39,7 +39,7 @@ const CardDitails = () => {
                                 </div>
                             )}
                             <div className="text-3xl font-bold text-black dark:text-gray-300">{product?.price}$</div>
-                            <div className="flex-none w-full mt-2 text-sm font-medium text-gray-500 dark:text-gray-300">{product?.description}</div>
+                            <div className="flex-none w-full mt-2 text-base font-medium text-gray-500 dark:text-gray-300">{product?.description}</div>
                             <div className="flex-none w-full mt-2 text-sm font-medium text-gray-500 dark:text-gray-300">Choose Size</div>
                             <div className="flex items-baseline mt-4 mb-6 text-gray-700 dark:text-gray-300">
                                 <div className="flex space-x-2">
@@ -78,7 +78,7 @@ const CardDitails = () => {
                             </div>
                             <div className="flex mb-4 text-sm font-medium">
                                 <button type="button"
-                                    className="py-2 px-4 bg-black hover:bg-gray-500 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg ">Buy
+                                    className="py-2 px-4 bg-black hover:bg-gray-500 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-3xl">Buy
                                     now</button>
                             </div>
                             <p className="text-sm text-gray-500 dark:text-gray-300">Free shipping on all continental US orders.</p>
