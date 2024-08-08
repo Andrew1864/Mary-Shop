@@ -15,8 +15,8 @@ const CardDitails = () => {
     const product = getProductById(id);
 
     return (
-        <section className="  bg-white">
-            <div class=" container relative top-44 flex-col md:flex-row  flex justify-around  gap-4 mx-4 py-12">
+        <section className="products relative top-28 bg-white">
+            <div class=" container relative flex-col md:flex-row  flex justify-around  gap-4 mx-4 py-12">
                 <Link to="/cards"
                     className=" relative bottom-12 left-11 text-gray-600 hover:text-gray-900 mb-8 inline-flex mt-5">
                         <ArrowBackOutlinedIcon />
