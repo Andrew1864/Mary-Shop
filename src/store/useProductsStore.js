@@ -103,13 +103,13 @@ const useProductsStore = create((set, get) => {
      * @param {Object} product - Данные товара.
      * @returns {void}
      */
-    const addToCart = (product) => {
-        const updatedCart = [...get().cart, { ...product, quantity: 1 }];
+    // const addToCart = (product) => {
+    //     const updatedCart = [...get().cart, { ...product, quantity: 1 }];
 
-        localStorage?.setItem("cart", JSON?.stringify(updatedCart));
+    //     localStorage?.setItem("cart", JSON?.stringify(updatedCart));
 
-        set({ cart: updatedCart });
-    };
+    //     set({ cart: updatedCart });
+    // };
 
     /**
      * Функция удаления товара из корзины
@@ -160,7 +160,7 @@ const useProductsStore = create((set, get) => {
         onToggleFavorite,
         getFavoriteProducts,
         cart: storedCart,
-        addToCart,
+        // addToCart,
         updateCartQuantity,
         getAllCartProducts,
         deleteProductFromCart,

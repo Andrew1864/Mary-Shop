@@ -7,16 +7,25 @@ const Cards = () => {
 
     const {
         products,
-        // onToggleFavorite,
+        onToggleFavorite,
         getProductById,
 
     } = useProductsStore();
 
-    const handleCardClick = () => {
-        navigate(`/cards${id}`);
+    // const favoriteProducts = getFavoriteProducts(); // вызываем функцию сохраненок из Stor
+
+    const handleCardClick = (id) => {
+        navigate(`/cards/${id}`);
     };
 
-    
+    const handleFavoriteHeart = (id) => {
+        // Достаем из стора поле isFavorite выбранного продукта
+        const { isFavorite } = getProductById(id);
+        // вкл/выкл товара в сохраненки
+        onToggleFavorite(id);
+    };
+
+
 
     return (
         <>
@@ -30,7 +39,7 @@ const Cards = () => {
                                     key={product?.id}
                                     details={product}
                                     onCardClick={handleCardClick}
-                                    // onHeartClick={handleFavoriteAndShowAlert}
+                                    onHeartClick={handleFavoriteHeart}
                                 />
                             ))}
                     </div>

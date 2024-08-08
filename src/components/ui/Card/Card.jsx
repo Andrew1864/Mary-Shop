@@ -26,7 +26,6 @@ export const Card = (props) => {
         imgSrc,
         isFavorite,
     } = props.details;
-    console.log("props", props.details)
 
     const { onCardClick, onHeartClick } = props;
 
@@ -38,15 +37,15 @@ export const Card = (props) => {
         console.log("123123", onHeartClick)
     };
 
+     // Обработчик клика по карточке
     const handleCardClick = () => {
         onCardClick && onCardClick(id);
     };
 
-
     return (
         <div
             onClick={handleCardClick}
-            className="w-full mb-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            className="w-full mb-3 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
             <div className='relative'>
             <img className="w-full h-2/3" src={imgSrc} alt="img" />
                 <button
@@ -70,7 +69,7 @@ export const Card = (props) => {
                 </div>
                 <div className="flex items-center justify-between">
                     <span className="text-3xl font-bold text-gray-900 dark:text-white">{price}$</span>
-                    <a href="#" class="text-white bg-black hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg w-40 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
+                    <a href="#" className="text-white bg-black hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg w-40 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
                 </div>
             </div>
         </div>
