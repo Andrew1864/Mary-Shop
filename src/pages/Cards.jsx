@@ -1,9 +1,18 @@
+import { useState } from "react";
 import { Card } from "../components/ui/Card/Card"
 import useProductsStore from "../store/useProductsStore";
 import { useNavigate } from "react-router-dom";
+import Alert from "../components/ui/Alert/Alert";
+
 
 const Cards = () => {
     const navigate = useNavigate(); // хук для роутинга
+
+    // Стейт для скрытия/показа и передачи сообщения в Alert
+    const [alertState, setAlertState] = useState({
+        isOpen: false,
+        message: "",
+    });
 
     const {
         products,
@@ -11,20 +20,36 @@ const Cards = () => {
         getProductById,
 
     } = useProductsStore();
-
     // const favoriteProducts = getFavoriteProducts(); // вызываем функцию сохраненок из Stor
 
     const handleCardClick = (id) => {
         navigate(`/cards/${id}`);
     };
 
-    const handleFavoriteHeart = (id) => {
-        // Достаем из стора поле isFavorite выбранного продукта
-        const { isFavorite } = getProductById(id);
-        // вкл/выкл товара в сохраненки
-        onToggleFavorite(id);
+    const handleCloseAlert = () => {
+        setAlertState({ ...alertState, isOpen: false});
     };
 
+    const handleFavoriteHeartAndAlert = (id) => {
+        // Достаем из стора поле isFavorite выбранного продукта
+        const { isFavorite } = getProductById(id);
+        
+        // вкл/выкл товара в сохраненки
+        onToggleFavorite(id);
+    
+        // Определение параметров для алерта в зависимости от состояния isFavorite
+        const alertConfig = isFavorite
+            ? { variant: "warning", message: "Товар удален из сохраненок" }
+            : { variant: "info", message: "Товар добавлен в сохраненки" };
+    
+        // Обновление состояния алерта
+        setAlertState({
+            isOpen: true,
+            ...alertConfig
+        });
+    };
+
+  
 
 
     return (
@@ -39,12 +64,18 @@ const Cards = () => {
                                     key={product?.id}
                                     details={product}
                                     onCardClick={handleCardClick}
-                                    onHeartClick={handleFavoriteHeart}
+                                    onHeartClick={handleFavoriteHeartAndAlert}
                                 />
                             ))}
                     </div>
                 </div>
             </section>
+           <Alert 
+           title="Сохранение товара"
+           subtitle={alertState?.message}
+           isOpen={alertState?.isOpen}
+           variant="neutral"
+           onClose={handleCloseAlert}/>
         </>
     );
 };
