@@ -9,9 +9,8 @@ body {
 }
 
 main {
-  padding-top: calc(132px + 12px); /* высота шапки */
-  padding-bottom: calc(364.8px + 12px); /* высота шапки */
-  background-color: aquamarine;
+  /* padding-top: calc(132px + 12px); 
+  padding-bottom: calc(364.8px + 12px);  */
 }
 
 h1,

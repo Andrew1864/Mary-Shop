@@ -6,7 +6,7 @@ import Footer from "../components/ui/Footer/Footer";
 
 const MainLayout = () => {
   return (
-    <div className="bg-[#F2F0F1] max-w-full flex flex-col min-h-screen ">
+    <div className=" max-w-full flex flex-col min-h-screen ">
       <Header />
       <main className="bg-[#F2F0F1] p-0 m-0 ">
         <Outlet />

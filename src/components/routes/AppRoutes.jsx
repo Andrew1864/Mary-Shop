@@ -3,13 +3,14 @@ import MainLayout from "../../layouts/MainLayout";
 import Home from "../../pages/Home";
 import Cards from "../../pages/Cards";
 import CardDitails from "../../pages/CardDitails";
+import FavoriteList from "../../pages/FavoriteList";
 
 
 const routes = [
   { path: "/", element: <Home /> },
   { path: "cards/", element: <Cards /> },
   { path: "cards/:id", element: <CardDitails /> },
-
+  { path: "favorites", element: <FavoriteList /> },
 ];
 
 /**

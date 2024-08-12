@@ -20,6 +20,10 @@ const Header = () => {
 
     const favoriteCount = getFavoriteProducts()?.length; // для показа сохраненок
 
+    const handleToOpenFavorite = () => {
+        navigate(`/favorites`);
+    }
+
     /**
   * Определяет, активна ли ссылка.
   * @param {string} path - Путь ссылки.
@@ -64,7 +68,8 @@ const Header = () => {
                     <div className=" inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                         <button
                             type="button"
-                            className={`w-14`}
+                            onClick={handleToOpenFavorite}
+                            className={`w-14  hover:text-gray-500 ${location?.pathname === "/favorites" ? "text-black" : ""}`}
                         >
                             <FavoriteIcon className="" />
                             {!!favoriteCount && (
