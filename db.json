@@ -72,7 +72,7 @@
             "quantity": 1
         },
         {
-            "id": "8",
+            "id": "2",
             "name": "T-shirt with tap details",
             "category": "jeaT-shirtns",
             "description": "A classic bookcase with adjustable shelves.",
@@ -105,7 +105,7 @@
             "quantity": 1
         },
         {
-            "id": "2",
+            "id": "3",
             "name": "Black Striped T-shirt",
             "category": "T-shirt",
             "description": "A simple and practical bench suitable for both indoor and outdoor use.",
@@ -135,7 +135,7 @@
             "quantity": 1
         },
         {
-            "id": "3",
+            "id": "4",
             "name": "Sleeve Striped T-shirt",
             "category": "T-shirt",
             "description": "A classic bed frame with storage options and a timeless design.",
@@ -168,7 +168,7 @@
             "quantity": 1
         },
         {
-            "id": "4",
+            "id": "5",
             "name": "Courage Graphic T-shirt",
             "category": "T-shirt",
             "description": "A small, sturdy T-shirt designed specifically for children's use.",
@@ -198,7 +198,7 @@
             "quantity": 1
         },
         {
-            "id": "5",
+            "id": "6",
             "name": "Vertical Striped shirt",
             "category": "shirt",
             "description": "A practical shirt frame with ample storage space underneath.",
@@ -230,7 +230,7 @@
             "quantity": 1
         },
         {
-            "id": "6",
+            "id": "7",
             "name": "Skinny Fit jeans",
             "category": "jeans",
             "description": "A versatile sofa bed with storage space and a comfortable design, perfect for smaller living spaces.",
@@ -263,7 +263,7 @@
             "quantity": 1
         },
         {
-            "id": "7",
+            "id": "8",
             "name": "Loose fit bermuda shorts",
             "category": "shorts",
             "description": "A sturdy and safe bed designed for children, with a timeless design that grows with them.",
@@ -293,7 +293,7 @@
             "quantity": 1
         },
         {
-            "id": "8",
+            "id": "9",
             "name": "Faded skinny jeans",
             "category": "jeans",
             "description": "A classic bookcase with adjustable shelves.",
