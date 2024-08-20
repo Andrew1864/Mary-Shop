@@ -1,5 +1,6 @@
 import useProductStore from "../store/useProductsStore";
 import { Link } from "react-router-dom";
+import Stepper from "../components/ui/Stepper/Stepper";
 import Alert from "../components/ui/Alert/Alert"
 import { useState } from "react";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
@@ -77,7 +78,12 @@ const Cart = () => {
                                         <div className="text-3xl mt-10 font-bold text-black dark:text-gray-300">{item?.price}$</div>
                                     </form>
                                 </div>
-
+                                <Stepper
+                                step={1}
+                                minValue="1"
+                                maxValue="10"
+                                id={item?.id}
+                                />
                             </div>
                         ))}
                     </div>
