@@ -56,13 +56,13 @@ export const Stepper = ({ minValue = 1, maxValue = 10, step = 1, id, onQuantityU
     };
 
     return (
-        <div className="py-2 px-3 absolute right-3 bottom-5 inline-block bg-white border border-gray-200 rounded dark:bg-neutral-900 dark:border-neutral-700">
+        <div className="py-2 px-3 absolute right-3 bottom-5 inline-block bg-white border border-gray-200 rounded-3xl dark:bg-neutral-900 dark:border-neutral-700">
             <div className="flex items-center gap-x-1.5">
                 <button
                     disabled={value === minValue}
                     onClick={handleBtnDecrement}
                     type="button"
-                    className="size-8 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
+                    className="size-8 inline-flex font-bold justify-center items-center gap-x-2 text-sm  rounded border border-gray-200 bg-white text-black shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
                     tabIndex="-1"
                     aria-label="Decrease"
                 >
@@ -87,7 +87,7 @@ export const Stepper = ({ minValue = 1, maxValue = 10, step = 1, id, onQuantityU
                     min={minValue}
                     max={maxValue}
                     readOnly
-                    className="p-0 w-7 bg-transparent border-0 text-gray-800 text-center focus:ring-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none dark:text-white"
+                    className="p-0 w-7 bg-transparent border-0 text-black text-center focus:ring-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none dark:text-white"
                     style={{ MozAppearance: "textfield" }}
                     type="number"
                 ></input>
@@ -96,7 +96,7 @@ export const Stepper = ({ minValue = 1, maxValue = 10, step = 1, id, onQuantityU
                     onClick={handleBtnIncrement}
                     disabled={value === maxValue}
                     type="button"
-                    className="size-8 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
+                    className="size-8 inline-flex justify-center items-center gap-x-2 text-sm font-bold rounded border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
                     tabIndex="-1"
                 >
                     <svg
