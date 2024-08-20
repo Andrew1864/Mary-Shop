@@ -34,7 +34,6 @@ export const Card = (props) => {
         event.stopPropagation();
 
         onHeartClick && onHeartClick(id);
-        console.log("123123", onHeartClick)
     };
 
      // Обработчик клика по карточке

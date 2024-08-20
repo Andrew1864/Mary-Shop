@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import useProductsStore from "../store/useProductsStore";
 import { Link } from "react-router-dom";
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
+import Alert from "../components/ui/Alert/Alert";
+import { useState } from "react";
 
 
 
@@ -10,22 +12,36 @@ const CardDitails = () => {
     const { id } = useParams();
 
     // Получаем из стора продукты
-    const { getProductById, onToggleFavorite } = useProductsStore();
+    const { getProductById, addToCart } = useProductsStore();
+
+    const [alertState, setAlertState] = useState({
+        isOpen: false,
+        title: "",
+        subtitle: "",
+    })
 
     const product = getProductById(id);
 
+    const handleAddToCart = () => {
+        addToCart(product);
+        setAlertState({
+            isOpen: true,
+            title: "Добаление товара.",
+            subtitle: "Товар успешно добавлен в корзину."
+        })
+    }
+
     return (
         <section className="products relative top-28 bg-white">
-            <div class=" container relative flex-col md:flex-row  flex justify-around  gap-4 mx-4 py-12">
+            <div class="mt-7 container relative flex-col md:flex-row  flex justify-around mx-4 py-12">
                 <Link to="/cards"
-                    className=" relative bottom-12 left-11 text-gray-600 hover:text-gray-900 mb-8 inline-flex mt-5">
-                        <ArrowBackOutlinedIcon />
+                    className=" relative left-11 text-gray-600 hover:text-gray-900 mb-8 inline-flex ">
+                    <ArrowBackOutlinedIcon />
                     Shop
                 </Link>
-                <div class="flex justify-center w-full  bg-white rounded-lg  dark:bg-gray-800 flex-col md:flex-row">
+                <div class="flex justify-center w-full mt-7  bg-white rounded-lg  dark:bg-gray-800 flex-col md:flex-row">
                     <div className="relative  md:max-w-full flex justify-center items-center">
                         <img className="w-full h-2/3 object-cover  md:h-full rounded-t-lg md:rounded-l-lg md:rounded-t-none" src={product?.imgSrc} alt="img" />
-
                     </div>
                     <div>
                         <form className="flex-auto p-6">
@@ -78,15 +94,22 @@ const CardDitails = () => {
                             </div>
                             <div className="flex mb-4 text-sm font-medium">
                                 <button type="button"
+                                    onClick={handleAddToCart}
                                     className="py-2 px-4 bg-black hover:bg-gray-500 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-3xl">Buy
                                     now</button>
                             </div>
                             <p className="text-sm text-gray-500 dark:text-gray-300">Free shipping on all continental US orders.</p>
                         </form>
                     </div>
-
                 </div>
             </div>
+            <Alert
+                title={alertState?.title}
+                subtitle={alertState?.subtitle}
+                variant="neutral"
+                isOpen={alertState?.isOpen}
+                onClose={() => setAlertState(!alertState?.isOpen)}
+            />
         </section>
     );
 };

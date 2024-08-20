@@ -1,12 +1,14 @@
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import useProductsStore from '../../../store/useProductsStore';
 import AddHomeWorkRoundedIcon from '@mui/icons-material/AddHomeWorkRounded';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalanceWalletOutlined';
+import AddShoppingCartSharpIcon from '@mui/icons-material/AddShoppingCartSharp';
 
 const NavItems = [
     { name: "Home", path: "/", icon: <AddHomeWorkRoundedIcon className="w-5 h-5 ml-1" /> },
-    { name: "Shop", path: "/cards", icon: <AccountBalanceWalletOutlinedIcon className="w-5 h-5 ml-1" />},
+    { name: "Shop", path: "/cards", icon: <AccountBalanceWalletOutlinedIcon className="w-5 h-5 ml-1" /> },
 ];
 
 const Header = () => {
@@ -16,13 +18,26 @@ const Header = () => {
     // Хук для навигации (роутинга) по страницам
     const navigate = useNavigate();
 
-    const { getFavoriteProducts } = useProductsStore(); 
+    const { getFavoriteProducts, getAllCartProducts, cart } = useProductsStore();
+
+    const [cartCount, setCartCount] = useState(0);
 
     const favoriteCount = getFavoriteProducts()?.length; // для показа сохраненок
 
+    useEffect(() => {
+        setCartCount(getAllCartProducts());
+    }, [cart, getAllCartProducts]);
+
+    // Показ страницы cохраненных товаров
     const handleToOpenFavorite = () => {
         navigate(`/favorites`);
+    };
+
+    // Показ страницы корзина товаров
+    const handleToOpenCart = () => {
+        navigate(`/cart`)
     }
+
 
     /**
   * Определяет, активна ли ссылка.
@@ -73,13 +88,25 @@ const Header = () => {
                         >
                             <FavoriteIcon className="" />
                             {!!favoriteCount && (
-                                <span className='w-4 h-4 mb-1 text-xs/6 px-1 leading-4 text-white inline-flex justify-center justify-items-center bg-indigo-500 rounded-3xl absolute  right-1'>
-                                        {favoriteCount}
+                                <span className='w-5 h-5 mb-1 text-xs/6 px-1 leading-5 text-white inline-flex justify-center justify-items-center bg-gray-500 rounded-3xl absolute top-9 right-14'>
+                                    {favoriteCount}
                                 </span>
                             )}
                         </button>
-                        <button>
-
+                        <button
+                            id='Cart'
+                            type='button'
+                            onClick={handleToOpenCart}
+                            className={`w-14  hover:text-gray-500 ${location?.pathname === "/cart" ? "text-black" : ""}`}
+                        >
+                            <AddShoppingCartSharpIcon />
+                            {!!cartCount && (
+                                <span 
+                                id='cart'
+                                className='w-5 h-5 text-xs px-1 leading-5 text-white inline-flex items-center justify-center bg-gray-500 rounded-full absolute top-9 right-0'>
+                                    {cartCount}
+                                </span>
+                            )}
                         </button>
                     </div>
                 </div>
