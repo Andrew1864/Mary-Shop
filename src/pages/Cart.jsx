@@ -5,20 +5,15 @@ import Alert from "../components/ui/Alert/Alert"
 import { useState } from "react";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
-import ModalForBuy from "../components/ui/Modal/ModalForBuy";
+// import ModalForBuy from "../components/ui/Modal/ModalForBuy";
 
 
 
 const Cart = () => {
-    // берем из Store cart и deleteProductFromCart 
+    // Берем из Store cart и deleteProductFromCart 
     const { cart, deleteProductFromCart } = useProductStore();
 
-    const [modalActive, setModalActive] = useState(false);
-
-    /**
-   * Обработчик для удаления товара из корзины
-   * @param {string} productId - id товара, который нужно удалить.
-   */
+    // Обработчик для удаления товара из корзины
     const handleDeleteProduct = (productId) => {
         deleteProductFromCart(productId);
         setAlertState({
@@ -26,12 +21,7 @@ const Cart = () => {
             title: "Удаление товара.",
             subtitle: "Товар был удален из корзины.",
         });
-    };
-
-    const handleOpenModal = () => {
-        setModalActive(true);
-    }
-
+    };    
     // Стейт для Alert
     const [alertState, setAlertState] = useState({
         isOpen: false,
@@ -41,11 +31,10 @@ const Cart = () => {
 
     return (
         <>
-            <section className="cart max-h-full  relative top-28 bottom-3 md:flex-row bg-white">
-
-                <div className=" max-w-7xl mx-auto px-2">
+            <section className="cart max-h-full relative top-28 bottom-3 md:flex-row bg-white">
+                <div className="max-w-7xl mx-auto px-2">
                     <Link to="/cards"
-                        className=" relative  left-11 text-gray-600 hover:text-gray-900 mb-8 inline-flex mt-5">
+                        className="relative left-11 text-gray-600 hover:text-gray-900 mb-8 inline-flex mt-5">
                         <ArrowBackOutlinedIcon />
                         Shop
                     </Link>
@@ -55,29 +44,34 @@ const Cart = () => {
                         </h2>
                     </div>
                     {cart?.length > 0 && (
-                        <div className=" flex justify-center w-full  bg-white rounded-lg  dark:bg-gray-800 flex-col gap-3">
+                        <div className="flex justify-center w-full bg-white rounded-lg dark:bg-gray-800 flex-col gap-3">
                             {cart?.map((item) => (
                                 <div
-                                    onClick={handleOpenModal}
-                                    className="border rounded shadow p-4 max-w-3xl relative cursor-pointer"
-                                    key={crypto?.randomUUID()}
+                                    className="border rounded shadow p-4 max-w-3xl relative"
+                                    key={item?.id}
                                 >
                                     <button
                                         onClick={() => handleDeleteProduct(item?.id)}
                                         className="absolute top-2 right-2">
                                         <DeleteForeverIcon />
                                     </button>
-                                    <div className="flex items-start">
-                                        <div className="relative  md:w-48 flex justify-center items-center">
-                                            <img className="object-cover w-full h-48 md:h-full rounded-t-lg md:rounded-l-lg md:rounded-t-none" src={item?.imgSrc} alt="img" />
+                                    <div
+                                        className="flex items-start"
+                                    >
+                                        <div className="relative md:w-48 flex justify-center items-center">
+                                            <img
+                                                className="object-cover w-full h-48 md:h-full rounded-t-lg md:rounded-l-lg md:rounded-t-none"
+                                                src={item?.imgSrc}
+                                                alt="img"
+                                            />
                                         </div>
                                         <form className="flex-auto ml-5">
                                             <div className="flex flex-wrap">
-                                                <h3 className="flex-auto  md:text-2xl font-bold dark:text-gray-50">{item?.name}</h3>
+                                                <h3 className="flex-auto md:text-2xl font-bold dark:text-gray-50">{item?.name}</h3>
                                             </div>
                                             <div className="flex">
                                                 <p className="mt-2 mr-1 text-base font-bold text-black dark:text-gray-300">Color:</p>
-                                                <p className="flex-none w-full mt-2 text-base font-medium text-gray-500 dark:text-gray-300">{`${item?.details?.colors}`}</p>
+                                                <p className="flex-none w-full mt-2 text-base font-medium text-gray-500 dark:text-gray-300">{item?.details?.colors}</p>
                                             </div>
                                             <div className="flex">
                                                 <p className="mt-2 mr-1 text-base font-bold text-black dark:text-gray-300">Size</p>
@@ -105,12 +99,9 @@ const Cart = () => {
                     onClose={() => setAlertState(!alertState?.isOpen)}
                 />
             </section>
-
-            <ModalForBuy active={modalActive} setActive={setModalActive} />
         </>
-
-    )
-
+    );
 };
 
 export default Cart
+

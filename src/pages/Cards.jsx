@@ -49,9 +49,6 @@ const Cards = () => {
         });
     };
 
-  
-
-
     return (
         <>
             <section className="products relative top-28 bg-white">

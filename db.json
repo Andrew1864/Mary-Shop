@@ -66,7 +66,7 @@
                 ]
             },
             "rating": "4.3",
-            "price": "199.00",
+            "price": "199",
             "imgSrc": "../assets/products/Two.png",
             "isFavorite": true,
             "quantity": 1
@@ -162,7 +162,7 @@
                 ]
             },
             "rating": "3.8",
-            "price": "249.00",
+            "price": "249",
             "imgSrc": "../assets/products/Four.png",
             "isFavorite": false,
             "quantity": 1
