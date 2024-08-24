@@ -1,19 +1,25 @@
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import useProductsStore from '../../../store/useProductsStore';
+// import Admin from '../Admin/AdminPanel';
+import { useAuth } from '../../hooks/useAuth';
 import AddHomeWorkRoundedIcon from '@mui/icons-material/AddHomeWorkRounded';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalanceWalletOutlined';
 import AddShoppingCartSharpIcon from '@mui/icons-material/AddShoppingCartSharp';
+import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 
 const NavItems = [
     { name: "Home", path: "/", icon: <AddHomeWorkRoundedIcon className="w-5 h-5 ml-1" /> },
     { name: "Shop", path: "/cards", icon: <AccountBalanceWalletOutlinedIcon className="w-5 h-5 ml-1" /> },
+    { name: "Admin", path: "/admin", icon: <SupervisorAccountIcon className="w-5 h-5 ml-1" /> },
 ];
 
 const Header = () => {
     // Получаем текущее местоположение (URL) из хука
     const location = useLocation();
+
+    const { user } = useAuth(); // Получаем текущего пользователя
 
     // Хук для навигации (роутинга) по страницам
     const navigate = useNavigate();
@@ -62,7 +68,8 @@ const Header = () => {
                             </h1>
                         </NavLink>
                         <div className="ml-6 flex-grow lg:flex lg:items-center lg:w-auto">
-                            <div className="text-sm lg:flex-grow">
+                            {[user?.role ==='admin' && { name: "Admin", path: "/admin", icon: <SupervisorAccountIcon className="w-5 h-5 ml-1" /> }].filter(Boolean).map((item) => {
+                                <div className="text-sm lg:flex-grow">
                                 {NavItems.map((item) => {
                                     return (
                                         <NavLink
@@ -78,6 +85,23 @@ const Header = () => {
                                     );
                                 })}
                             </div>
+                            })}
+                            {/* <div className="text-sm lg:flex-grow">
+                                {NavItems.map((item) => {
+                                    return (
+                                        <NavLink
+                                            to={item?.path}
+                                            key={item?.path}
+                                            className={` text-zinc-800 mr-10 inline-flex items-center px-1 pt-1 text-sm ${isActiveLink(item?.path)
+                                                ? "text-indigo-500 border-b-2 border-indigo-500"
+                                                : "hover:text-indigo-500"
+                                                }`}>
+                                            {item?.name}
+                                            {item?.icon}
+                                        </NavLink>
+                                    );
+                                })}
+                            </div> */}
                         </div>
                     </nav>
                     <div className=" inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">

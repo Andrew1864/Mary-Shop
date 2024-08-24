@@ -1,5 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "../../layouts/MainLayout";
+import AdminRoute from "./PrivateRoute";
+import Admin from "../ui/Admin/AdminPanel";
 import Home from "../../pages/Home";
 import Cards from "../../pages/Cards";
 import Cart from "../../pages/Cart";
@@ -10,6 +12,7 @@ import FavoriteList from "../../pages/FavoriteList";
 const routes = [
   { path: "/", element: <Home /> },
   { path: "cards/", element: <Cards /> },
+  { path: "/admin", element: <AdminRoute element={<Admin />} />},
   { path: "cards/:id", element: <CardDitails /> },
   { path: "favorites", element: <FavoriteList /> },
   { path: "cart", element: <Cart /> },
