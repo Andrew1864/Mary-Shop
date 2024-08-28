@@ -62,11 +62,15 @@ export const AuthProvider = ({ children }) => {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON?.stringify(newUser),
+                body: JSON.stringify(newUser),
             });
+            const responseText = await createResponse.text(); // Чтение ответа как текст
 
-            if (!createResponse?.ok) {
-                throw new Error("Ошибка регистрации пользователя");
+            console.log("Response text:", responseText);
+
+            if (!createResponse.ok) {
+                const errorText = await createResponse.text();
+                throw new Error(`Ошибка регистрации пользователя: ${errorText}`);
             }
 
             const createdUser = await createResponse?.json();

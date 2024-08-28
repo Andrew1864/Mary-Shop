@@ -3,32 +3,44 @@ import { useState, useEffect } from 'react';
 import useProductsStore from '../../../store/useProductsStore';
 // import Admin from '../Admin/AdminPanel';
 import { useAuth } from '../../hooks/useAuth';
+import Modal from '../Modal/Modal';
+import Register from '../Registration/Registr';
+import Login from '../Registration/Login';
 import AddHomeWorkRoundedIcon from '@mui/icons-material/AddHomeWorkRounded';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalanceWalletOutlined';
 import AddShoppingCartSharpIcon from '@mui/icons-material/AddShoppingCartSharp';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 
-const NavItems = [
-    { name: "Home", path: "/", icon: <AddHomeWorkRoundedIcon className="w-5 h-5 ml-1" /> },
-    { name: "Shop", path: "/cards", icon: <AccountBalanceWalletOutlinedIcon className="w-5 h-5 ml-1" /> },
-    { name: "Admin", path: "/admin", icon: <SupervisorAccountIcon className="w-5 h-5 ml-1" /> },
-];
+// const NavItems = [
+//     { name: "Home", path: "/", icon: <AddHomeWorkRoundedIcon className="w-5 h-5 ml-1" /> },
+//     { name: "Shop", path: "/cards", icon: <AccountBalanceWalletOutlinedIcon className="w-5 h-5 ml-1" /> },
+//     { name: "Admin", path: "/admin", icon: <SupervisorAccountIcon className="w-5 h-5 ml-1" /> },
+// ];
 
 const Header = () => {
     // Получаем текущее местоположение (URL) из хука
     const location = useLocation();
 
-    const { user } = useAuth(); // Получаем текущего пользователя
+    const { user, onLogout } = useAuth(); // Получаем текущего пользователя
 
     // Хук для навигации (роутинга) по страницам
     const navigate = useNavigate();
 
+    // Стор для корзины 
     const { getFavoriteProducts, getAllCartProducts, cart } = useProductsStore();
 
     const [cartCount, setCartCount] = useState(0);
 
-    const favoriteCount = getFavoriteProducts()?.length; // для показа сохраненок
+    // для показа сохраненок
+    const favoriteCount = getFavoriteProducts()?.length;
+
+    // Стейт для регистрации 
+
+    const [isLoginModalOpen, setLoginModalOpen] = useState(false);
+
+    // Стейт для Логинки 
+    const [isRegisterModalOpen, setRegisterModalOpen] = useState(false);
 
     useEffect(() => {
         setCartCount(getAllCartProducts());
@@ -68,24 +80,26 @@ const Header = () => {
                             </h1>
                         </NavLink>
                         <div className="ml-6 flex-grow lg:flex lg:items-center lg:w-auto">
-                            {[user?.role ==='admin' && { name: "Admin", path: "/admin", icon: <SupervisorAccountIcon className="w-5 h-5 ml-1" /> }].filter(Boolean).map((item) => {
-                                <div className="text-sm lg:flex-grow">
-                                {NavItems.map((item) => {
-                                    return (
-                                        <NavLink
-                                            to={item?.path}
-                                            key={item?.path}
-                                            className={` text-zinc-800 mr-10 inline-flex items-center px-1 pt-1 text-sm ${isActiveLink(item?.path)
-                                                ? "text-indigo-500 border-b-2 border-indigo-500"
-                                                : "hover:text-indigo-500"
-                                                }`}>
-                                            {item?.name}
-                                            {item?.icon}
-                                        </NavLink>
-                                    );
-                                })}
+                            <div className="text-sm lg:flex-grow">
+                                {[
+                                    { name: "Home", path: "/", icon: <AddHomeWorkRoundedIcon className="w-5 h-5 ml-1" /> },
+                                    { name: "Shop", path: "/cards", icon: <AccountBalanceWalletOutlinedIcon className="w-5 h-5 ml-1" /> },
+                                    // Условно добавляем ссылку на панель администратора
+                                    user?.role === 'admin' && { name: "admin", path: "/admin", icon: <SupervisorAccountIcon className="w-5 h-5 ml-1" /> },
+                                ].filter(Boolean).map((item) => (
+                                    <NavLink
+                                        to={item.path}
+                                        key={item.path}
+                                        className={`text-zinc-800 mr-10 inline-flex items-center px-1 pt-1 text-sm ${isActiveLink(item.path)
+                                            ? "text-indigo-500 border-b-2 border-indigo-500"
+                                            : "hover:text-indigo-500"
+                                            }`}
+                                    >
+                                        {item.name}
+                                        {item.icon}
+                                    </NavLink>
+                                ))}
                             </div>
-                            })}
                             {/* <div className="text-sm lg:flex-grow">
                                 {NavItems.map((item) => {
                                     return (
@@ -125,16 +139,45 @@ const Header = () => {
                         >
                             <AddShoppingCartSharpIcon />
                             {!!cartCount && (
-                                <span 
-                                id='cart'
-                                className='w-5 h-5 text-xs px-1 leading-5 text-white inline-flex items-center justify-center bg-gray-500 rounded-full absolute top-9 right-0'>
+                                <span
+                                    id='cart'
+                                    className='w-5 h-5 text-xs px-1 leading-5 text-white inline-flex items-center justify-center bg-gray-500 rounded-full absolute top-9 right-0'>
                                     {cartCount}
                                 </span>
                             )}
                         </button>
+                        {!user ? (
+                            <>
+                                <button
+                                    onClick={() => setLoginModalOpen(true)}
+                                    className="ml-4 px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"
+                                >
+                                    Вход
+                                </button>
+                                <button
+                                    onClick={() => setRegisterModalOpen(true)}
+                                    className="ml-4 px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700"
+                                >
+                                    Регистрация
+                                </button>
+                            </>
+                        ) : ( 
+                            <button
+                            type='button'
+                            className='ml-4 px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700'
+                            onClick={onLogout}>
+                                    Exit    
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>
+            <Modal isOpen={isLoginModalOpen} onClose={() => setLoginModalOpen(false)} title="Вход">
+                <Login />
+            </Modal>
+            <Modal isOpen={isRegisterModalOpen} onClose={() => setRegisterModalOpen(false)} title="Регистрация">
+                <Register />
+            </Modal>
         </header>
     )
 };
