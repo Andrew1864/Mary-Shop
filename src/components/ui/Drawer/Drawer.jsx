@@ -74,7 +74,7 @@ export const Drawer = ({
                             onClick={closeDrawer}
                             className="text-gray-600 hover:text-gray-800 w-10 h-10 inline-flex justify-center items-center absolute top-0 right-0 text-xl"
                         >
-                            <LiaTimesSolid />
+                            <ClearIcon />
                         </button>
                     </header>
                     <main className="pt-0 pb-0">{children}</main>
