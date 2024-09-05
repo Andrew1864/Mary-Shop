@@ -332,9 +332,15 @@
       "username": "admin",
       "email": "andrew@mail.ru",
       "password": "123456789",
-      "confirmPassword": "123456789",
       "role": "admin",
       "id": 1
+    },
+    {
+      "username": "Andrew",
+      "email": "and@mail.ru",
+      "password": "12345678",
+      "role": "user",
+      "id": 2
     }
   ]
 }
