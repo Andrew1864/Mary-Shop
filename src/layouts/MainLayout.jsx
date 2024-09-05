@@ -4,6 +4,7 @@ import Footer from "../components/ui/Footer/Footer";
 
 
 
+
 const MainLayout = () => {
   return (
     <div className=" max-w-full flex flex-col min-h-screen ">
