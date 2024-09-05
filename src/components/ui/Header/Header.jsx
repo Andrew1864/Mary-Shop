@@ -85,7 +85,7 @@ const Header = () => {
                                     { name: "Home", path: "/", icon: <AddHomeWorkRoundedIcon className="w-5 h-5 ml-1" /> },
                                     { name: "Shop", path: "/cards", icon: <AccountBalanceWalletOutlinedIcon className="w-5 h-5 ml-1" /> },
                                     // Условно добавляем ссылку на панель администратора
-                                    user?.role === 'admin' && { name: "admin", path: "/admin", icon: <SupervisorAccountIcon className="w-5 h-5 ml-1" /> },
+                                    user?.role === 'admin' && { name: "Admin", path: "/admin", icon: <SupervisorAccountIcon className="w-5 h-5 ml-1" /> },
                                 ].filter(Boolean).map((item) => (
                                     <NavLink
                                         to={item.path}
@@ -122,11 +122,11 @@ const Header = () => {
                         <button
                             type="button"
                             onClick={handleToOpenFavorite}
-                            className={`w-14  hover:text-gray-500 ${location?.pathname === "/favorites" ? "text-black" : ""}`}
+                            className={`w-14 relative  hover:text-gray-500 ${location?.pathname === "/favorites" ? "text-black" : ""}`}
                         >
                             <FavoriteIcon className="" />
                             {!!favoriteCount && (
-                                <span className='w-5 h-5 mb-1 text-xs/6 px-1 leading-5 text-white inline-flex justify-center justify-items-center bg-gray-500 rounded-3xl absolute top-9 right-14'>
+                                <span className='w-5 h-5 mb-1 text-xs/6 px-1 leading-5 text-white inline-flex justify-center justify-items-center bg-gray-500 rounded-3xl absolute top-[-4px] right-px'>
                                     {favoriteCount}
                                 </span>
                             )}
@@ -135,13 +135,13 @@ const Header = () => {
                             id='Cart'
                             type='button'
                             onClick={handleToOpenCart}
-                            className={`w-14  hover:text-gray-500 ${location?.pathname === "/cart" ? "text-black" : ""}`}
+                            className={`w-14 relative hover:text-gray-500 ${location?.pathname === "/cart" ? "text-black" : ""}`}
                         >
                             <AddShoppingCartSharpIcon />
                             {!!cartCount && (
                                 <span
                                     id='cart'
-                                    className='w-5 h-5 text-xs px-1 leading-5 text-white inline-flex items-center justify-center bg-gray-500 rounded-full absolute top-9 right-0'>
+                                    className='w-5 h-5 text-xs px-1 leading-5 text-white inline-flex items-center justify-center bg-gray-500 rounded-full absolute top-[-4px] right-0'>
                                     {cartCount}
                                 </span>
                             )}
