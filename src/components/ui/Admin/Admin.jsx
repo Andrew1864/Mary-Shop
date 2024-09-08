@@ -139,7 +139,7 @@ const Admin = () => {
           Страница управления товарами
         </h2>
         <button
-          className="text-white bg-black hover:bg-gray-500 focus:ring-4 focus:outline-none rounded-3xl focus:ring-blue-300 font-medium  text-lg w-40 px-5 py-2 text-center
+          className="text-white bg-black hover:bg-gray-500 focus:ring-4 focus:outline-none rounded-3xl focus:ring-blue-300 font-medium  text-lg w-40 mb-3 py-2 text-center
            dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           onClick={() => {
             setSelectedValue(null);

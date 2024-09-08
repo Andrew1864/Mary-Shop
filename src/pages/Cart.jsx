@@ -21,7 +21,7 @@ const Cart = () => {
             title: "Удаление товара.",
             subtitle: "Товар был удален из корзины.",
         });
-    };    
+    };
     // Стейт для Alert
     const [alertState, setAlertState] = useState({
         isOpen: false,
@@ -77,7 +77,9 @@ const Cart = () => {
                                                 <p className="mt-2 mr-1 text-base font-bold text-black dark:text-gray-300">Size</p>
                                                 <p className="flex-none w-full mt-2 text-base font-medium text-gray-500 dark:text-gray-300">Medium</p>
                                             </div>
-                                            <div className="text-3xl mt-10 font-bold text-black dark:text-gray-300">{item?.price}$</div>
+                                            <div className="text-2xl md:text-3xl lg:text-4xl mt-6 font-bold text-black dark:text-gray-300">
+                                                {item?.price}$
+                                            </div>
                                         </form>
                                     </div>
                                     <Stepper

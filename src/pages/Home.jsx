@@ -10,7 +10,7 @@ const Home = () => {
     return (
         <section className=" bg-[#F2F0F1] mx-auto px-2 relative">
             <div className="grid relative top-28 py-8 px-4 mx-auto max-w-screen-xl lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-                <div className="place-self-center mr-auto lg:col-span-7">
+                <div className="place-self-center mt-4 mr-auto lg:col-span-7">
                     <h1 className="mb-4 max-w-2xl text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl dark:text-white">
                         FIND CLOTHES THAT MATCHES YOUR STYLE
                     </h1>
