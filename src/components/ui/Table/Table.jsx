@@ -9,7 +9,7 @@ import TableRow from "./TableRow";
  * @returns {JSX.Element} Элемент JSX.
  */
 const Table = ({ data, headers, onRowDoubleClick }) => {
-
+   
     return (
         <div className="w-full">
             <div className="flex flex-row">

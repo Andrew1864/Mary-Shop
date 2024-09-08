@@ -326,7 +326,20 @@
       "quantity": 1
     }
   ],
-  "items": [],
+  "items": [
+    {
+      "name": "Товар",
+      "category": "шорты",
+      "price": "140",
+      "id": 1
+    },
+    {
+      "name": "NewShop",
+      "category": "short",
+      "price": "240",
+      "id": 2
+    }
+  ],
   "users": [
     {
       "username": "admin",

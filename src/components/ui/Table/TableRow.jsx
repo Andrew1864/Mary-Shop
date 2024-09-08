@@ -1,4 +1,4 @@
-import TextCell from "./TextCell";z
+import TextCell from "./TextCell";
 
 /**
  * Компонент строка таблицы.
@@ -7,7 +7,7 @@ import TextCell from "./TextCell";z
  * @param {function} props.onDoubleClick - Функция для обработки двойного клика (событие браузера).
  * @returns {JSX.Element} Элемент JSX.
  */
-const TableRow = () => {
+const TableRow = ({ rowData, onDoubleClick }) => {
 
     // Получает все ключи объекта rowData, кроме ключа id
     const rowKeys = Object.keys(rowData || {}).filter((key) => key !== "id");
