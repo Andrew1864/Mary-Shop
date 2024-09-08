@@ -38,7 +38,7 @@
     {
       "id": "1",
       "name": "Polo with Tipping Details",
-      "category": "Polo",
+      "category": "T-shirt",
       "description": "A sturdy bed frame with a minimalist design, available in various sizes.",
       "details": {
         "features": [
@@ -74,7 +74,7 @@
     {
       "id": "2",
       "name": "T-shirt with tap details",
-      "category": "jeaT-shirtns",
+      "category": "T-shirt",
       "description": "A classic bookcase with adjustable shelves.",
       "details": {
         "features": [
@@ -200,7 +200,7 @@
     {
       "id": "6",
       "name": "Vertical Striped shirt",
-      "category": "shirt",
+      "category": "T-shirt",
       "description": "A practical shirt frame with ample storage space underneath.",
       "details": {
         "features": [
@@ -231,6 +231,198 @@
     },
     {
       "id": "7",
+      "name": "Vertical White shirt",
+      "category": "T-shirt",
+      "description": "A practical shirt frame with ample storage space underneath.",
+      "details": {
+        "features": [
+          "Integrated storage space under the bed.",
+          "Adjustable bed sides allow the use of mattresses of different thicknesses.",
+          "Easy to assemble; tools and instructions included."
+        ],
+        "dimensions": {
+          "width": "140 cm",
+          "length": "200 cm",
+          "height": "47 cm"
+        },
+        "materials": [
+          "Particleboard",
+          "Fiberboard"
+        ],
+        "careInstructions": "Wipe clean with a damp cloth. Wipe dry with a clean cloth.",
+        "colors": [
+          "White",
+          "Black"
+        ]
+      },
+      "rating": "2.2",
+      "price": "150",
+      "imgSrc": "../assets/products/fot.jpg",
+      "isFavorite": false,
+      "quantity": 1
+    },
+    {
+      "id": "8",
+      "name": "Black programer shirt",
+      "category": "T-shirt",
+      "description": "A practical shirt frame with ample storage space underneath.",
+      "details": {
+        "features": [
+          "Integrated storage space under the bed.",
+          "Adjustable bed sides allow the use of mattresses of different thicknesses.",
+          "Easy to assemble; tools and instructions included."
+        ],
+        "dimensions": {
+          "width": "140 cm",
+          "length": "200 cm",
+          "height": "47 cm"
+        },
+        "materials": [
+          "Particleboard",
+          "Fiberboard"
+        ],
+        "careInstructions": "Wipe clean with a damp cloth. Wipe dry with a clean cloth.",
+        "colors": [
+          "White",
+          "Black"
+        ]
+      },
+      "rating": "2.2",
+      "price": "180",
+      "imgSrc": "../assets/products/fot2.jpg",
+      "isFavorite": false,
+      "quantity": 1
+    },
+    {
+      "id": "9",
+      "name": "Vertical Black New Programm shirt",
+      "category": "T-shirt",
+      "description": "A practical shirt frame with ample storage space underneath.",
+      "details": {
+        "features": [
+          "Integrated storage space under the bed.",
+          "Adjustable bed sides allow the use of mattresses of different thicknesses.",
+          "Easy to assemble; tools and instructions included."
+        ],
+        "dimensions": {
+          "width": "140 cm",
+          "length": "200 cm",
+          "height": "47 cm"
+        },
+        "materials": [
+          "Particleboard",
+          "Fiberboard"
+        ],
+        "careInstructions": "Wipe clean with a damp cloth. Wipe dry with a clean cloth.",
+        "colors": [
+          "White",
+          "Black"
+        ]
+      },
+      "rating": "2.2",
+      "price": "140",
+      "imgSrc": "../assets/products/fot3.jpg",
+      "isFavorite": false,
+      "quantity": 1
+    },
+    {
+      "id": "10",
+      "name": "I want to beleliev shirt",
+      "category": "T-shirt",
+      "description": "A practical shirt frame with ample storage space underneath.",
+      "details": {
+        "features": [
+          "Integrated storage space under the bed.",
+          "Adjustable bed sides allow the use of mattresses of different thicknesses.",
+          "Easy to assemble; tools and instructions included."
+        ],
+        "dimensions": {
+          "width": "140 cm",
+          "length": "200 cm",
+          "height": "47 cm"
+        },
+        "materials": [
+          "Particleboard",
+          "Fiberboard"
+        ],
+        "careInstructions": "Wipe clean with a damp cloth. Wipe dry with a clean cloth.",
+        "colors": [
+          "White",
+          "Black"
+        ]
+      },
+      "rating": "2.2",
+      "price": "100",
+      "imgSrc": "../assets/products/fot4.jpg",
+      "isFavorite": false,
+      "quantity": 1
+    },
+    {
+      "id": "11",
+      "name": "Vertical Soda shirt",
+      "category": "T-shirt",
+      "description": "A practical shirt frame with ample storage space underneath.",
+      "details": {
+        "features": [
+          "Integrated storage space under the bed.",
+          "Adjustable bed sides allow the use of mattresses of different thicknesses.",
+          "Easy to assemble; tools and instructions included."
+        ],
+        "dimensions": {
+          "width": "140 cm",
+          "length": "200 cm",
+          "height": "47 cm"
+        },
+        "materials": [
+          "Particleboard",
+          "Fiberboard"
+        ],
+        "careInstructions": "Wipe clean with a damp cloth. Wipe dry with a clean cloth.",
+        "colors": [
+          "White",
+          "Black"
+        ]
+      },
+      "rating": "2.2",
+      "price": "105",
+      "imgSrc": "../assets/products/fot5.jpg",
+      "isFavorite": false,
+      "quantity": 1
+    },
+    {
+      "id": "12",
+      "name": "Vertical Samurai shirt",
+      "category": "T-shirt",
+      "description": "A practical shirt frame with ample storage space underneath.",
+      "details": {
+        "features": [
+          "Integrated storage space under the bed.",
+          "Adjustable bed sides allow the use of mattresses of different thicknesses.",
+          "Easy to assemble; tools and instructions included."
+        ],
+        "dimensions": {
+          "width": "140 cm",
+          "length": "200 cm",
+          "height": "47 cm"
+        },
+        "materials": [
+          "Particleboard",
+          "Fiberboard"
+        ],
+        "careInstructions": "Wipe clean with a damp cloth. Wipe dry with a clean cloth.",
+        "colors": [
+          "White",
+          "Black"
+        ]
+      },
+      "rating": "2.2",
+      "price": "190",
+      "imgSrc": "../assets/products/fot6.jpg",
+      "isFavorite": false,
+      "quantity": 1
+    },
+    {
+      "id": "13",
       "name": "Skinny Fit jeans",
       "category": "jeans",
       "description": "A versatile sofa bed with storage space and a comfortable design, perfect for smaller living spaces.",
@@ -263,9 +455,9 @@
       "quantity": 1
     },
     {
-      "id": "8",
+      "id": "14",
       "name": "Loose fit bermuda shorts",
-      "category": "shorts",
+      "category": "jeans",
       "description": "A sturdy and safe bed designed for children, with a timeless design that grows with them.",
       "details": {
         "features": [
@@ -293,7 +485,7 @@
       "quantity": 1
     },
     {
-      "id": "9",
+      "id": "15",
       "name": "Faded skinny jeans",
       "category": "jeans",
       "description": "A classic bookcase with adjustable shelves.",
@@ -324,20 +516,218 @@
       "imgSrc": "../assets/products/another3.png",
       "isFavorite": false,
       "quantity": 1
+    },
+    {
+      "id": "16",
+      "name": "Faded DarkSoul jeans",
+      "category": "jeans",
+      "description": "A classic bookcase with adjustable shelves.",
+      "details": {
+        "features": [
+          "Adjustable shelves can be arranged according to your needs.",
+          "A simple unit can be enough storage for a limited space or the foundation for a larger storage solution.",
+          "Easy to assemble; tools and instructions included."
+        ],
+        "dimensions": {
+          "width": "80 cm",
+          "height": "202 cm",
+          "depth": "28 cm"
+        },
+        "materials": [
+          "Particleboard",
+          "Fiberboard"
+        ],
+        "careInstructions": "Wipe clean with a damp cloth. Wipe dry with a clean cloth.",
+        "colors": [
+          "White",
+          "Black",
+          "Brown"
+        ]
+      },
+      "rating": "4.5",
+      "price": "300",
+      "imgSrc": "../assets/products/b1.jpg",
+      "isFavorite": false,
+      "quantity": 1
+    },
+    {
+      "id": "17",
+      "name": "Faded New jeans",
+      "category": "jeans",
+      "description": "A classic bookcase with adjustable shelves.",
+      "details": {
+        "features": [
+          "Adjustable shelves can be arranged according to your needs.",
+          "A simple unit can be enough storage for a limited space or the foundation for a larger storage solution.",
+          "Easy to assemble; tools and instructions included."
+        ],
+        "dimensions": {
+          "width": "80 cm",
+          "height": "202 cm",
+          "depth": "28 cm"
+        },
+        "materials": [
+          "Particleboard",
+          "Fiberboard"
+        ],
+        "careInstructions": "Wipe clean with a damp cloth. Wipe dry with a clean cloth.",
+        "colors": [
+          "White",
+          "Black",
+          "Brown"
+        ]
+      },
+      "rating": "4.5",
+      "price": "230",
+      "imgSrc": "../assets/products/b2.jpg",
+      "isFavorite": false,
+      "quantity": 1
+    },
+    {
+      "id": "18",
+      "name": "Witcher jeans",
+      "category": "jeans",
+      "description": "A classic bookcase with adjustable shelves.",
+      "details": {
+        "features": [
+          "Adjustable shelves can be arranged according to your needs.",
+          "A simple unit can be enough storage for a limited space or the foundation for a larger storage solution.",
+          "Easy to assemble; tools and instructions included."
+        ],
+        "dimensions": {
+          "width": "80 cm",
+          "height": "202 cm",
+          "depth": "28 cm"
+        },
+        "materials": [
+          "Particleboard",
+          "Fiberboard"
+        ],
+        "careInstructions": "Wipe clean with a damp cloth. Wipe dry with a clean cloth.",
+        "colors": [
+          "White",
+          "Black",
+          "Brown"
+        ]
+      },
+      "rating": "4.5",
+      "price": "290",
+      "imgSrc": "../assets/products/b3.jpg",
+      "isFavorite": false,
+      "quantity": 1
+    },
+    {
+      "id": "19",
+      "name": "Faded IronMans jeans",
+      "category": "jeans",
+      "description": "A classic bookcase with adjustable shelves.",
+      "details": {
+        "features": [
+          "Adjustable shelves can be arranged according to your needs.",
+          "A simple unit can be enough storage for a limited space or the foundation for a larger storage solution.",
+          "Easy to assemble; tools and instructions included."
+        ],
+        "dimensions": {
+          "width": "80 cm",
+          "height": "202 cm",
+          "depth": "28 cm"
+        },
+        "materials": [
+          "Particleboard",
+          "Fiberboard"
+        ],
+        "careInstructions": "Wipe clean with a damp cloth. Wipe dry with a clean cloth.",
+        "colors": [
+          "White",
+          "Black",
+          "Brown"
+        ]
+      },
+      "rating": "4.5",
+      "price": "274",
+      "imgSrc": "../assets/products/b4.jpg",
+      "isFavorite": false,
+      "quantity": 1
+    },
+    {
+      "id": "20",
+      "name": "New LIL PIP jeans",
+      "category": "jeans",
+      "description": "A classic bookcase with adjustable shelves.",
+      "details": {
+        "features": [
+          "Adjustable shelves can be arranged according to your needs.",
+          "A simple unit can be enough storage for a limited space or the foundation for a larger storage solution.",
+          "Easy to assemble; tools and instructions included."
+        ],
+        "dimensions": {
+          "width": "80 cm",
+          "height": "202 cm",
+          "depth": "28 cm"
+        },
+        "materials": [
+          "Particleboard",
+          "Fiberboard"
+        ],
+        "careInstructions": "Wipe clean with a damp cloth. Wipe dry with a clean cloth.",
+        "colors": [
+          "White",
+          "Black",
+          "Brown"
+        ]
+      },
+      "rating": "4.5",
+      "price": "260",
+      "imgSrc": "../assets/products/b5.jpg",
+      "isFavorite": false,
+      "quantity": 1
+    },
+    {
+      "id": "16",
+      "name": "Black Samurai jeans",
+      "category": "jeans",
+      "description": "A classic bookcase with adjustable shelves.",
+      "details": {
+        "features": [
+          "Adjustable shelves can be arranged according to your needs.",
+          "A simple unit can be enough storage for a limited space or the foundation for a larger storage solution.",
+          "Easy to assemble; tools and instructions included."
+        ],
+        "dimensions": {
+          "width": "80 cm",
+          "height": "202 cm",
+          "depth": "28 cm"
+        },
+        "materials": [
+          "Particleboard",
+          "Fiberboard"
+        ],
+        "careInstructions": "Wipe clean with a damp cloth. Wipe dry with a clean cloth.",
+        "colors": [
+          "White",
+          "Black",
+          "Brown"
+        ]
+      },
+      "rating": "4.5",
+      "price": "299",
+      "imgSrc": "../assets/products/b6.jpg",
+      "isFavorite": false,
+      "quantity": 1
     }
   ],
   "items": [
-    {
-      "name": "Товар",
-      "category": "шорты",
-      "price": "140",
-      "id": 1
-    },
     {
       "name": "NewShop",
       "category": "short",
       "price": "240",
       "id": 2
+    },
+    {
+      "name": "NewShop",
+      "category": "short",
+      "price": "240",
+      "id": 3
     }
   ],
   "users": [
