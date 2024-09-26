@@ -1,7 +1,7 @@
 const Footer = () => {
     return (
-      <footer className="">
-        <div className="mx-auto  bg-white max-w-7xl px-6 lg:px-8 relative top-28">
+      <footer className="  bg-gray-100  px-6 lg:px-8 relative top-28  left-0 right-0 z-10">
+        <div className="mx-auto">
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4 lg:gap-8 py-14 max-w-xs mx-auto sm:max-w-2xl md:max-w-3xl lg:max-w-full">
             <div className="col-span-full mb-10 lg:col-span-2 lg:mb-0">
               <a
@@ -162,7 +162,7 @@ const Footer = () => {
             </div>
   
             <div className="lg:mx-auto text-center sm:text-left">
-              <h4 className="text-lg text-gray-900 font-medium mb-7">Pagedone</h4>
+              <h4 className="text-lg text-gray-900 font-medium mb-7">Mary</h4>
               <ul className="text-sm  transition-all duration-500">
                 <li className="mb-6">
                   <a

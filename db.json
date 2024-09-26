@@ -721,12 +721,6 @@
       "name": "NewShop",
       "category": "short",
       "price": "240",
-      "id": 2
-    },
-    {
-      "name": "NewShop",
-      "category": "short",
-      "price": "240",
       "id": 3
     }
   ],
