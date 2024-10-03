@@ -77,26 +77,65 @@ const SwiperComponents = () => {
                             BROWSE BY DRESS STYLE
                         </h1>
                         <div className="flex justify-center flex-wrap gap-5">
-                            <div>
-                                <img src="../assets/products/Frame61.png" alt="" />
+                            <div className="group h-64 w-96 [perspective:1000px]">
+                                <div className="relative h-full w-full shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                                    <div className="absolute inset-0">
+                                        <img 
+                                        className="h-full w-full rounded-xl object-cover shadow-xl shadow-black/40"
+                                        src="../assets/products/Frame61.png" alt="" />
+                                    </div>
+                                    <div className="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                                        <h1 className="mt-5 text-3xl font-bold">Casual</h1>
+                                        <p className="text-base">Casual clothes for home and walks around the house</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <img src="../assets/products/Frame62.png" alt="" />
+                            <div id="formal" className="group h-64 w-2/4 [perspective:1000px]">
+                                <div className="relative h-full w-full shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                                    <div className="absolute inset-0">
+                                        <img 
+                                        className="h-full w-full rounded-xl object-cover shadow-xl shadow-black/40"
+                                        src="../assets/products/Frame62.png" alt="" />
+                                    </div>
+                                    <div className="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                                        <h1 className="mt-5 text-3xl font-bold">Formal</h1>
+                                        <p className="text-base">Suits for various meetings and negotiations</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <img src="../assets/products/Frame64.png" alt="" />
+                            <div 
+                            id="party" className="group h-64 w-2/4 [perspective:1000px]">
+                                <div className="relative h-full w-full shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                                    <div className="absolute inset-0">
+                                        <img 
+                                        className="h-full w-full rounded-xl object-cover shadow-xl shadow-black/40"
+                                        src="../assets/products/Frame64.png" alt="" />
+                                    </div>
+                                    <div className="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                                        <h1 className="mt-5 text-3xl font-bold">Party</h1>
+                                        <p className="text-base">Evening dresses and party suits</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <img src="../assets/products/Frame63.png" alt="" />
+                            <div className="group h-64 w-96 [perspective:1000px]">
+                                <div className="relative h-full w-full shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                                    <div className="absolute inset-0">
+                                        <img 
+                                        className="h-full w-full rounded-xl object-cover shadow-xl shadow-black/40"
+                                        src="../assets/products/Frame63.png" alt="" />
+                                    </div>
+                                    <div className="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                                        <h1 className="mt-5 text-3xl font-bold">Gym</h1>
+                                        <p className="text-base">Tracksuits for training</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </SwiperSlide>
         </Swiper>
-    )
-
-
+    );
 };
 
 export default SwiperComponents;
