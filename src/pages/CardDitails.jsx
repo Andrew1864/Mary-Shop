@@ -30,18 +30,6 @@ const CardDitails = () => {
             subtitle: "Товар успешно добавлен в корзину."
         })
     }
-    {/* <Link to="/cards"
-                    className=" relative left-11 text-gray-600 hover:text-gray-900 mb-8 inline-flex ">
-                    <ArrowBackOutlinedIcon />
-                    Shop
-                </Link> */}
-    //  src={product?.imgSrc} alt="img"
-    {/* {product?.rating && (
-                                <div className="text-yellow-500 text-xl">
-                                    {"★".repeat(Math.floor(product?.rating)) +
-                                        "☆".repeat(5 - Math.floor(product?.rating))}
-                                </div>
-                            )} */}
 
     return (
         <section className=" mt-9">
@@ -133,7 +121,6 @@ const CardDitails = () => {
                 onClose={() => setAlertState(!alertState?.isOpen)}
             />
             </div>
-          
         </section>
     );
 };

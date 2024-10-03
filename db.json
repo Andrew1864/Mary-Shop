@@ -719,9 +719,10 @@
   "items": [
     {
       "name": "NewShop",
-      "category": "short",
-      "price": "240",
-      "id": 3
+      "category": "Shirt",
+      "price": "147",
+      "description": "nice SHirt",
+      "id": 1
     }
   ],
   "users": [

@@ -43,6 +43,7 @@ const Admin = () => {
     name: "",
     category: "",
     price: "",
+    description: "",
   });
 
   /**
@@ -152,7 +153,8 @@ const Admin = () => {
           headers={[
             { key: "name", title: "Название" },
             { key: "category", title: "Категория" },
-            { key: "price", title: "Цена" }
+            { key: "price", title: "Цена" },
+            { key: "description", title: "Описание товара" }
           ]}
           data={items}
           onRowDoubleClick={handleRowDoubleClick}
@@ -222,6 +224,23 @@ const Admin = () => {
                     defaultValue={formValues?.price || selectedValue?.price}
                     onChange={handleInput}
                     placeholder="Введите цену"
+                    readOnly={!isIdit}
+                  />
+                </div>
+                <div className="mb-4">
+                  <label
+                    className="block text-gray-700 text-sm font-bold mb-2"
+                    htmlFor="description"
+                  >
+                    Описание товара
+                  </label>
+                  <input
+                    className="shadow read-only:bg-gray-200 read-only:cursor-not-allowed appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    name="description"
+                    type="text"
+                    defaultValue={formValues?.description || selectedValue?.description}
+                    onChange={handleInput}
+                    placeholder="Описание товара"
                     readOnly={!isIdit}
                   />
                 </div>
