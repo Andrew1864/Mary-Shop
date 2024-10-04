@@ -718,11 +718,18 @@
   ],
   "items": [
     {
-      "name": "NewShop",
-      "category": "Shirt",
-      "price": "147",
-      "description": "nice SHirt",
+      "name": "Black",
+      "category": "Clothes",
+      "price": "150",
+      "description": "Black clothes",
       "id": 1
+    },
+    {
+      "name": "asdsad",
+      "category": "asdss",
+      "price": "170",
+      "description": "asdasdasd",
+      "id": 2
     }
   ],
   "users": [
