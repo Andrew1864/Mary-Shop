@@ -37,8 +37,16 @@ const Admin = () => {
     category: "",
     price: "",
     description: "",
+    imgSrc: "", // Поле для ссылки на картинку
   });
 
+  /**
+  * Обработчик изменения для поля imgSrc.
+  */
+  const handleImageInput = (e) => {
+    const { value } = e.target;
+    handleInput(e); // Обновление состояния formValues
+  }
   /**
   * Обработка отправки формы.
   * Если товар выбран, то редактируем его, иначе добавляем новый товар.
@@ -138,7 +146,8 @@ const Admin = () => {
             { key: "name", title: "Название" },
             { key: "category", title: "Категория" },
             { key: "price", title: "Цена" },
-            { key: "description", title: "Описание товара" }
+            { key: "description", title: "Описание товара" },
+            { key: "imgSrc", title: "Ссылка картинки" }
           ]}
           data={items}
           onRowDoubleClick={handleRowDoubleClick}
@@ -220,6 +229,37 @@ const Admin = () => {
                     required
                   />
                 </div>
+                <div className="mb-4">
+                  <label
+                    className="block text-gray-700 text-sm font-bold mb-2"
+                    htmlFor="imgSrc"
+                  >
+                    Ссылка на картинку
+                  </label>
+                  <input
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    name="imgSrc"
+                    type="text"
+                    value={formValues?.imgSrc}
+                    onChange={handleImageInput}
+                    placeholder="URL картинки"
+                    required
+                  />
+                </div>
+                {/* Предпросмотр картинки */}
+                {formValues.imgSrc && (
+                  <div className="mb-4">
+                    <p className="text-gray-600">Предпросмотр:</p>
+                    <img
+                      src={formValues.imgSrc}
+                      alt="Preview"
+                      className="w-full h-40 object-cover mt-2"
+                      onError={(e) => {
+                        e.target.style.display = "none"; // скрыть картинку при ошибке
+                      }}
+                    />
+                  </div>
+                )}
 
                 <div className="flex gap-4">
                   <button
@@ -233,7 +273,7 @@ const Admin = () => {
                       Удалить
                     </button>
                   )}
-                    <button>
+                  <button>
                     <AddIcon />
                   </button>
                 </div>
@@ -248,8 +288,8 @@ const Admin = () => {
           isOpen={alertData?.isOpen}
           onClose={() => {
             setAlertData((prevAlertData) => ({
-              ...prevAlertData, 
-              isOpen: false 
+              ...prevAlertData,
+              isOpen: false
             }));
           }}
         />

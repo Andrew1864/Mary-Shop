@@ -7,7 +7,7 @@
 
 const TextCell = ({ value }) => {
     return (
-        <div className="flex items-center border border-gray-400 flex-grow w-2 leading-10 px-2">
+        <div className="flex items-center border truncate border-gray-400 flex-grow w-2 leading-10 px-2">
             {value}
         </div>
     );
