@@ -1,35 +1,183 @@
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import useProductsStore from '../../../store/useProductsStore';
+// import Admin from '../Admin/AdminPanel';
+import { useAuth } from '../../hooks/useAuth';
+import Modal from '../Modal/Modal';
+import Register from '../Registration/Registr';
+import Login from '../Registration/Login';
+import AddHomeWorkRoundedIcon from '@mui/icons-material/AddHomeWorkRounded';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalanceWalletOutlined';
+import AddShoppingCartSharpIcon from '@mui/icons-material/AddShoppingCartSharp';
+import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
+
+// const NavItems = [
+//     { name: "Home", path: "/", icon: <AddHomeWorkRoundedIcon className="w-5 h-5 ml-1" /> },
+//     { name: "Shop", path: "/cards", icon: <AccountBalanceWalletOutlinedIcon className="w-5 h-5 ml-1" /> },
+//     { name: "Admin", path: "/admin", icon: <SupervisorAccountIcon className="w-5 h-5 ml-1" /> },
+// ];
 
 const Header = () => {
+    // Получаем текущее местоположение (URL) из хука
+    const location = useLocation();
+
+    const { user, onLogout } = useAuth(); // Получаем текущего пользователя
+
+    // Хук для навигации (роутинга) по страницам
+    const navigate = useNavigate();
+
+    // Стор для корзины 
+    const { getFavoriteProducts, getAllCartProducts, cart } = useProductsStore();
+
+    const [cartCount, setCartCount] = useState(0);
+
+    // для показа сохраненок
+    const favoriteCount = getFavoriteProducts()?.length;
+
+    // Стейт для регистрации 
+
+    const [isLoginModalOpen, setLoginModalOpen] = useState(false);
+
+    // Стейт для Логинки 
+    const [isRegisterModalOpen, setRegisterModalOpen] = useState(false);
+
+    useEffect(() => {
+        setCartCount(getAllCartProducts());
+    }, [cart, getAllCartProducts]);
+
+    // Показ страницы cохраненных товаров
+    const handleToOpenFavorite = () => {
+        navigate(`/favorites`);
+    };
+
+    // Показ страницы корзина товаров
+    const handleToOpenCart = () => {
+        navigate(`/cart`)
+    }
+
+
+    /**
+  * Определяет, активна ли ссылка.
+  * @param {string} path - Путь ссылки.
+  * @returns {boolean} ссылка активна или нет.
+  */
+    const isActiveLink = (path) => {
+        return (
+            location?.pathname === path ||
+            (path === "/cards" && location?.pathname?.startsWith("/cards"))
+        );
+    };
 
     return (
-        <header className="bg-white shadow fixed top-0 left-0 right-0 z-10">
-            <div>
-                <div  className="">
+        <header className="bg-gray-100 shadow fixed top-0 left-0 right-0 z-10 ">
+            <div className="max-w-7xl mx-auto px-2 sm:h-29">
+                <div className="relative flex justify-between ">
                     <nav className="flex items-center justify-between flex-wrap bg-teal p-6">
-                        <div className="flex items-center flex-no-shrink font-sans font-black text-6xl text-black ml-7 mr-3">
-                          MARY.SHOP
-                        </div>
-                        <div className="block lg:hidden">
-                            <button className="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-indigo-500 hover:border-indigo-500">
-                                <svg className="h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>
-                            </button>
-                        </div>
-                        <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+                        <NavLink to="/">
+                            <h1 className="mb-4 mr-8 max-w-2xl text-4xl font-extrabold leading-none md:text-5xl xl:text-5xl dark:text-white">
+                                MARY.SHOP
+                            </h1>
+                        </NavLink>
+                        <div className="ml-6 flex-grow lg:flex lg:items-center lg:w-auto">
                             <div className="text-sm lg:flex-grow">
-                                <a href="#responsive-header" className="text-zinc-800 inline-flex items-center px-1 pt-1 text-sm  hover:text-indigo-500 hover:border-indigo-500 mr-4">
-                                    Home
-                                </a>
-                                <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-indigo-500 hover:border-indigo-500 mr-4">
-                                    Shop
-                                </a>
+                                {[
+                                    { name: "Home", path: "/", icon: <AddHomeWorkRoundedIcon className="w-5 h-5 ml-1" /> },
+                                    { name: "Shop", path: "/cards", icon: <AccountBalanceWalletOutlinedIcon className="w-5 h-5 ml-1" /> },
+                                    // Условно добавляем ссылку на панель администратора
+                                    user?.role === 'admin' && { name: "Admin", path: "/admin", icon: <SupervisorAccountIcon className="w-5 h-5 ml-1" /> },
+                                ].filter(Boolean).map((item) => (
+                                    <NavLink
+                                        to={item.path}
+                                        key={item.path}
+                                        className={`text-zinc-800 mr-10 inline-flex items-center px-1 pt-1 text-sm ${isActiveLink(item.path)
+                                            ? "text-indigo-500 border-b-2 border-indigo-500"
+                                            : "hover:text-indigo-500"
+                                            }`}
+                                    >
+                                        {item.name}
+                                        {item.icon}
+                                    </NavLink>
+                                ))}
                             </div>
-                            <div>
-                                <a href="#" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal hover:bg-white mt-4 lg:mt-0">Download</a>
-                            </div>
+                            {/* <div className="text-sm lg:flex-grow">
+                                {NavItems.map((item) => {
+                                    return (
+                                        <NavLink
+                                            to={item?.path}
+                                            key={item?.path}
+                                            className={` text-zinc-800 mr-10 inline-flex items-center px-1 pt-1 text-sm ${isActiveLink(item?.path)
+                                                ? "text-indigo-500 border-b-2 border-indigo-500"
+                                                : "hover:text-indigo-500"
+                                                }`}>
+                                            {item?.name}
+                                            {item?.icon}
+                                        </NavLink>
+                                    );
+                                })}
+                            </div> */}
                         </div>
                     </nav>
+                    <div className=" inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                        <button
+                            type="button"
+                            onClick={handleToOpenFavorite}
+                            className={`w-14 relative  hover:text-gray-500 ${location?.pathname === "/favorites" ? "text-black" : ""}`}
+                        >
+                            <FavoriteIcon className="" />
+                            {!!favoriteCount && (
+                                <span className='w-5 h-5 mb-1 text-xs/6 px-1 leading-5 text-white inline-flex justify-center justify-items-center bg-gray-500 rounded-3xl absolute top-[-4px] right-px'>
+                                    {favoriteCount}
+                                </span>
+                            )}
+                        </button>
+                        <button
+                            id='Cart'
+                            type='button'
+                            onClick={handleToOpenCart}
+                            className={`w-14 relative hover:text-gray-500 ${location?.pathname === "/cart" ? "text-black" : ""}`}
+                        >
+                            <AddShoppingCartSharpIcon />
+                            {!!cartCount && (
+                                <span
+                                    id='cart'
+                                    className='w-5 h-5 text-xs px-1 leading-5 text-white inline-flex items-center justify-center bg-gray-500 rounded-full absolute top-[-4px] right-0'>
+                                    {cartCount}
+                                </span>
+                            )}
+                        </button>
+                        {!user ? (
+                            <>
+                                <button
+                                    onClick={() => setLoginModalOpen(true)}
+                                    className="ml-4 px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"
+                                >
+                                    Вход
+                                </button>
+                                <button
+                                    onClick={() => setRegisterModalOpen(true)}
+                                    className="ml-4 px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700"
+                                >
+                                    Регистрация
+                                </button>
+                            </>
+                        ) : ( 
+                            <button
+                            type='button'
+                            className='ml-4 px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700'
+                            onClick={onLogout}>
+                                    Exit    
+                            </button>
+                        )}
+                    </div>
                 </div>
             </div>
+            <Modal isOpen={isLoginModalOpen} onClose={() => setLoginModalOpen(false)} title="Вход">
+                <Login />
+            </Modal>
+            <Modal isOpen={isRegisterModalOpen} onClose={() => setRegisterModalOpen(false)} title="Регистрация">
+                <Register />
+            </Modal>
         </header>
     )
 };
