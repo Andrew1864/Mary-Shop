@@ -1,4 +1,5 @@
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+
 /**
  * Компонент карточка.
  * @param {object} props - Свойства компонента.

@@ -25,13 +25,15 @@ const Admin = () => {
   const [isEdit, setIsEdit] = useState(false);
 
   // Стор для CRUD операций
-  const { items, fetchItems, addItem, editItem, deleteItem } = useItemsStore();
+  const { items, fetchItems, addItem, editItem, deleteItem, addToItems, getItemsById } = useItemsStore();
+
+  const item = getItemsById();
 
   useEffect(() => {
     fetchItems();
   }, [fetchItems]);
 
-  // Обработка данных формы
+  // Обработка данных формы 
   const { formValues, handleInput, resetForm, setForm } = useForm({
     name: "",
     category: "",
@@ -39,6 +41,20 @@ const Admin = () => {
     description: "",
     imgSrc: "", // Поле для ссылки на картинку
   });
+
+  const handleAddToCard = () => {
+    if (selectedValue) {
+      addToItems(selectedValue);
+      setAlertData({
+        title: "Товар добавлен в общий список.",
+        subtitle: "Товар доступен на странице товаров.",
+        variant: "info",
+        isOpen: true,
+      });
+    }
+  };
+
+  console.log(handleAddToCard)
 
   /**
   * Обработчик изменения для поля imgSrc.
@@ -58,6 +74,7 @@ const Admin = () => {
     event.preventDefault();
 
     if (isEdit && selectedValue) {
+      // Редактирование товара
       editItem(selectedValue.id, formValues);
       setAlertData({
         title: "Редактирование товара.",
@@ -66,6 +83,7 @@ const Admin = () => {
         isOpen: true,
       });
     } else {
+      // Добавление нового товара
       addItem(formValues);
       setAlertData({
         title: "Добавление товара.",
@@ -74,6 +92,8 @@ const Admin = () => {
         isOpen: true,
       });
     }
+
+    // Закрываем форму и сбрасываем состояние
     setDrawerOpen(false);
     resetForm();
     setIsEdit(false);
@@ -273,7 +293,9 @@ const Admin = () => {
                       Удалить
                     </button>
                   )}
-                  <button>
+                  <button
+                    onClick={handleAddToCard}
+                    className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white bg-black hover:bg-gray-500 focus:ring-4 focus:outline-none rounded-3xl focus:ring-blue-300 w-40">
                     <AddIcon />
                   </button>
                 </div>

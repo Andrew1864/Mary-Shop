@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { Card } from "../components/ui/Card/Card"
 import useProductsStore from "../store/useProductsStore";
+import useItemsStore from "../store/useItemsStore";
 import { useNavigate } from "react-router-dom";
 import Alert from "../components/ui/Alert/Alert";
 import Tabs from "../components/ui/Tabs/Tab";
+import Admin from "../components/ui/Admin/Admin";
+
 
 
 const Cards = () => {
@@ -15,6 +18,7 @@ const Cards = () => {
         message: "",
     });
 
+     // Данные из двух сторов
     const {
         products,
         onToggleFavorite,
@@ -22,6 +26,8 @@ const Cards = () => {
         getCategories,
         getFilteredProducts,
     } = useProductsStore();
+
+    const { items } = useItemsStore();
 
     // Стейт для активной категории
     const [activeCategory, setActiveCategory] = useState("All");
@@ -31,26 +37,21 @@ const Cards = () => {
 
     // Стейт для и фильтрации продуктов
     const [filteredProducts, setFilteredProducts] = useState([]);
-
     useEffect(() => {
         // Устанавливаем категории и отфильтрованные продукты после загрузки товаров
-        if (products) {
-            setCategories(getCategories());
-            setFilteredProducts(getFilteredProducts(activeCategory));
-        }
-    }, [products, activeCategory, getCategories, getFilteredProducts]);
+        const combinedProducts = [...(products || []), ...(items || [])];
+        setFilteredProducts(getFilteredProducts(activeCategory, combinedProducts));
+    }, [products, items, activeCategory, getCategories, getFilteredProducts]);
 
-      // Обработчик изменения категории
-      const handleCategoryChange = (category) => {
+    console.log("Продукты общие",filteredProducts)
+
+    // Обработчик изменения категории
+    const handleCategoryChange = (category) => {
         setActiveCategory(category);
     };
 
     const handleCardClick = (id) => {
         navigate(`/cards/${id}`);
-    };
-
-    const handleCloseAlert = () => {
-        setAlertState({ ...alertState, isOpen: false });
     };
 
     // Обработчик добавления товара в сохраненки и показа уведомления
@@ -73,25 +74,31 @@ const Cards = () => {
         });
     };
 
+    const handleCloseAlert = () => {
+        setAlertState({ ...alertState, isOpen: false });
+    };
+
     return (
         <>
+         
             <section className="products relative top-28 bg-white">
                 <div className="container mx-auto px-4">
                     <h2 className="mb-4 text-4xl font-bold">Casual.</h2>
                     <Tabs
-                        categories={categories}
+                        categories={getCategories()}
                         activeCategory={activeCategory}
                         onCategoryChange={handleCategoryChange}
                     />
-                     <div className="flex flex-wrap justify-between">
+                    <div className="flex flex-wrap justify-between">
                         {/* Отображаем отфильтрованные продукты */}
-                        {filteredProducts.length > 0 ? (
+                        {Array.isArray(filteredProducts) && filteredProducts.length > 0 ? (
                             filteredProducts.map((product) => (
                                 <Card
                                     key={product?.id}
                                     details={product}
                                     onCardClick={handleCardClick}
                                     onHeartClick={handleFavoriteHeartAndAlert}
+
                                 />
                             ))
                         ) : (

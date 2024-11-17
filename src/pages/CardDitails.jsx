@@ -34,10 +34,10 @@ const CardDitails = () => {
     return (
         <section className=" mt-9">
             <Link to="/cards"
-                    className=" relative top-20 left-11 text-gray-600 hover:text-gray-900 mb-8 inline-flex ">
-                    <ArrowBackOutlinedIcon />
-                    Shop
-                </Link>
+                className=" relative top-20 left-11 text-gray-600 hover:text-gray-900 mb-8 inline-flex ">
+                <ArrowBackOutlinedIcon />
+                Shop
+            </Link>
             <div className="relative top-10">
                 <div className="container mx-auto px-4 py-8">
                     <div className="flex flex-wrap -mx-4">
@@ -68,11 +68,11 @@ const CardDitails = () => {
                             </div>
                             <div className="flex items-center mb-4">
                                 {product?.rating && (
-                                <div className="text-yellow-500 text-xl">
-                                    {"★".repeat(Math.floor(product?.rating)) +
-                                        "☆".repeat(5 - Math.floor(product?.rating))}
-                                </div>
-                            )}
+                                    <div className="text-yellow-500 text-xl">
+                                        {"★".repeat(Math.floor(product?.rating)) +
+                                            "☆".repeat(5 - Math.floor(product?.rating))}
+                                    </div>
+                                )}
                                 <span className="ml-2 text-gray-600">{product?.rating}(120 reviews)</span>
                             </div>
                             <p className="font-bold">Description:</p>
@@ -91,7 +91,7 @@ const CardDitails = () => {
                             </div>
                             <div className="flex space-x-4 mb-6">
                                 <button
-                                onClick={handleAddToCart}
+                                    onClick={handleAddToCart}
                                     className="bg-gray-600 flex gap-2 items-center text-white px-6 py-2 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" className="size-6">
@@ -114,12 +114,12 @@ const CardDitails = () => {
                     </div>
                 </div>
                 <Alert
-                title={alertState?.title}
-                subtitle={alertState?.subtitle}
-                variant="neutral"
-                isOpen={alertState?.isOpen}
-                onClose={() => setAlertState(!alertState?.isOpen)}
-            />
+                    title={alertState?.title}
+                    subtitle={alertState?.subtitle}
+                    variant="neutral"
+                    isOpen={alertState?.isOpen}
+                    onClose={() => setAlertState(!alertState?.isOpen)}
+                />
             </div>
         </section>
     );

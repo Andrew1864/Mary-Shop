@@ -1,8 +1,10 @@
+import { json } from "react-router";
 import { create } from "zustand";
 
-const useItemsStore = create((set) => {
+const useItemsStore = create((set, get) => {
 
     const items = []; // состояния списка товаров 
+    const cards = JSON.parse(localStorage.getItem("cards")) || [];
 
     // Асинхронная функция для получения списка товаров и обновления состояния 
     const fetchItems = async () => {
@@ -48,6 +50,8 @@ const useItemsStore = create((set) => {
         }
     };
 
+    const getItemsById = (id) => items?.find((item) => item?.id === id) || null;
+
     /**
  * Обновляет товар по id.
  *
@@ -82,6 +86,18 @@ const useItemsStore = create((set) => {
     };
 
     /**
+   * Функция добавления товаров в корзину
+   * @param {Object} product - Данные товара.
+   * @returns {void}asda
+   */
+    const addToItems = (newItem) => {
+        const updatedItems = [...get().items, newItem];
+        localStorage.setItem("cards", JSON.stringify(updatedItems));
+
+        set({ items: updatedItems });
+    };
+
+    /**
 * Удаляет товар по id.
 *
 * @param {number} id - id товара, который необходимо удалить.
@@ -110,7 +126,10 @@ const useItemsStore = create((set) => {
 
     return {
         items,
+        getItemsById,
         fetchItems,
+        addToItems,
+
         addItem,
         editItem,
         deleteItem,

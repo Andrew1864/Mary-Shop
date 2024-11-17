@@ -43,8 +43,7 @@ const useProductsStore = create((set, get) => {
       @param {string} id - id продукта.
       @returns {Object|null} Возвращает найденный продукт или null.
       */
-    const getProductById = (id) =>
-        products?.find((product) => product?.id === id) || null;
+    const getProductById = (id) => products?.find((product) => product?.id === id) || null;
 
     /**
      * Получает отфильтрованные продукты по категории.
@@ -101,7 +100,7 @@ const useProductsStore = create((set, get) => {
     /**
      * Функция добавления товаров в корзину
      * @param {Object} product - Данные товара.
-     * @returns {void}
+     * @returns {void}asda
      */
     const addToCart = (product) => {
         const updatedCart = [...get().cart, { ...product, quantity: 1 }];
