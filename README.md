@@ -21,8 +21,8 @@
 ## 📦 Установка и запуск
 ```bash
 # Клонируем репозиторий
-git clone https://github.com/username/MaryShop.git
-cd MaryShop
+git clone https://github.com/username/Mary-Shop.git
+cd Mary-Shop
 
 # Устанавливаем зависимости
 npm install
